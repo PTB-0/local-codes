@@ -37,4 +37,4 @@ while True :
             print("yanlış bir şey oldugu için çıkılıyor")
             break
 
-system("C:\\Users\\USER\\Desktop\\kodlar\\Python\\pythonTest.py")
+system("C:\\Users\\USER\\local-codes\\Desktop\\kodlar\\Python\\pythonTest.py")
