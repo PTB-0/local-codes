@@ -1,0 +1,1 @@
+puts("ilk kod sayılır bakalıom çalışçakmı")
