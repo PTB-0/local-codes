@@ -19,7 +19,7 @@ def chS():
 tet = Label(
     fg= "blue",
     
-    text = "niga"
+    text = "hey"
     )
 tet.pack()
 buton = Button(
