@@ -63,7 +63,7 @@ while  a == 0 :
             a = 1
             print("!!!!!KAYBETTİN EZİK !!!!")
             time.sleep(5)
-            print("pardon dans ediyoduöda evet nerde kalmıştık")
+            print("EVET")
             cikis()
             pass
         else :
