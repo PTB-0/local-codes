@@ -1,0 +1,2 @@
+from istemliUygulama import *
+uygulamaAcma()
