@@ -41,7 +41,7 @@ while c == 1 :
             else :
                 print("path sorunu var")
                 break
-            os.system("C:\\Users\\USER\\Desktop\\kodlar\\Python\\" + dosyaAdi)
+            os.system("C:\\Users\\USER\\Desktop\\local-codes\\kodlar\\Python\\" + dosyaAdi)
         else :
             if os.path.exists(dosyaAdi) == False :
                 f = open(dosyaAdi , "x")
