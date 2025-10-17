@@ -28,7 +28,6 @@ while True :
             else : 
                 print(lastOne , "cümlede 1 kez tekrar ediyor")
 
-    
     de = input("devam etmek istermisiniz :")
     cumle.count()
     if de == "evet" :
