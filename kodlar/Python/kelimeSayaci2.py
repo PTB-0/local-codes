@@ -8,7 +8,10 @@ while True :
     
     print("bu cümlenin içerdiği kelime sayısı :" , len(kelimeler) , "\n bu cümlenin içerdiği karakter sayısı (boşluklar dahil)" , len(cumle))
     for i in range(len(kelimeler)-1):
-        last = kelimeler.pop(selection)
+        try :
+            last = kelimeler.pop(selection)
+        except IndexError :
+            break
         kelimeler.insert(selection , last)
         print(last , kelimeler.count(last))
         if kelimeler.count(last) > 1 :
