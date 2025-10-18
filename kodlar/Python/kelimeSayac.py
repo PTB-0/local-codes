@@ -6,7 +6,8 @@ global kelimeler
 global kelimelerRAM
 kelimelerRAM = []
 kelimeler = []
-    
+tur = 0
+
 while True :
     cumle = input("cümlenizi giriniz")
     kelimeSayici(cumle)
@@ -16,7 +17,7 @@ while True :
     print(kelimeler)
     for i in range(len(cumle)) :
         lastOne = kelimeler.pop(0)
-        for i in range(kelimeler.count()) :
+        while (tur == len(kelimelerRAM)) == False :
             if kelimelerRAM.count(lastOne) >= 1 :
                 count = kelimelerRAM.count(lastOne)
                 kelimelerRAM.pop(0)
@@ -27,6 +28,7 @@ while True :
                     continue
             else : 
                 print(lastOne , "cümlede 1 kez tekrar ediyor")
+                break
 
     de = input("devam etmek istermisiniz :")
     cumle.count()
