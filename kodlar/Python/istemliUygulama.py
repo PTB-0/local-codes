@@ -12,8 +12,6 @@ def uygulamaAcma() :
     except ValueError :
         print("bir yol girmen lazım")
     system(yol)
-        
-    
 while True :
     if uygulamaAcma() :
         break

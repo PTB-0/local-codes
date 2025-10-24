@@ -8,7 +8,6 @@ while  opDegeri == 1 :
     sayiBir = int(birinciSayi)
     sayiBaska = int(ikinciSayi)
     kararSayisi = input("ne işlemi 1 toplama 2 çıkarma 3 çarpma 4 bölme 5 üslü\n")
-
     if kararSayisi == "1" :
         print(sayiBaska + sayiBir)
     elif kararSayisi == "2" :
