@@ -75,7 +75,6 @@ def tahmin() :
                 else :
                     filmIzlemek()
                     break
-                
 
 
 while True :
