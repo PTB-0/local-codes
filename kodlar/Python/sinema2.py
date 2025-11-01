@@ -4,20 +4,24 @@ farkliHarflerSayisi = []
 options = 2 #burda kaç atne seçenek varsa  o sayıyı bunla değiştirin yani eğer 3 seçenek varsa bu sayıyı 3 yapın
 
 def filmDuzenlemek() :
-    ad = input("filmin adı ney")
-    kS = int(input("kaç koltuk olacak"))
-    for i in range(kS) :
-        koltuk = input("koltuğu giriniz")
-        koltuklar.append(koltuk)
-    print("Film : \n" , ad , "Koltuk sayısı : \n" , kS , "Koltuklar : \n" , koltuklar )
-    yapilanFilm = {
-            "Film Adı" : ad ,
-            "Koltuk Sayısı" : kS ,
-            "Koltuklar" : koltuklar.copy()
-            
-        }
-    filmler.append(yapilanFilm)
-    print(filmler)
+    tekrar = int(input("kaç tane film gireceksiniz"))
+    for i in range(tekrar):
+        ad = input("filmin adı ney")
+        kS = int(input("kaç koltuk olacak"))
+        for i in range(kS) :
+            koltuk = input("koltuğu giriniz")
+            koltuklar.append(koltuk)
+        print("Film : \n" , ad , "Koltuk sayısı : \n" , kS , "Koltuklar : \n" , koltuklar )
+        yapilanFilm = {
+                "Film Adı" : ad ,
+                "Koltuk Sayısı" : kS ,
+                "Koltuklar" : koltuklar.copy()
+                
+            }
+        filmler.append(yapilanFilm)
+        print(filmler)
+        koltuklar.clear()
+
     
 def filmIzlemek() :
     if not filmler :       #not yok demek oluyop burda
@@ -28,6 +32,7 @@ def filmIzlemek() :
             print( secilenFilm, "." , yapilanFilm['Film Adı'])
             secilenFilm += 1
         Film = int(input("Hnagi filmi izlemek istersiniz"))
+        Film -= 1
         print(filmler[Film]['Koltuklar'])
         kisi = int(input("kaç kişi olucak"))
         for i in range(kisi) :
@@ -57,15 +62,19 @@ def tahmin() :
         else :
             if x > y :
                 filmDuzenlemek()
+                break
             elif x < y :
                 filmIzlemek()
+                break
             else :
                 import random as rasgele
                 
                 if rasgele.randint(1 , options) == 1 :
                     filmDuzenlemek()
+                    break
                 else :
                     filmIzlemek()
+                    break
                 
 
 
