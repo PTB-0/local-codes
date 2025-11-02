@@ -1,15 +1,14 @@
 """
 kelimeleri otomatik hafızadaki kelimelerden hangisine benziyorsa ona çevirmesini sağlayacağım
 """
+import os
 global dopamin
 dopamin = 0
 global dopaminRam
 dopaminRam = 0
 kelimeler = []
 oncekihatalar = []
-def DisHafizayaEris():
-    pass
-
+folderPath = r"C:\Users\USER\Desktop\local-codes"
 def kelimeAlici(eklenenKelime = None) :
     if eklenenKelime == None  or eklenenKelime == "" :
         eklenenKelime = input("hafızaya eklemek istediğiniz kelimeyi yazınız").lower()
@@ -33,7 +32,6 @@ def kelimeAlici(eklenenKelime = None) :
         }
         kelimeler.append(kelime)
     print(kelime)
-
 def kelimeChecker(yazilanKelime = None) :
     lastBiggestNum = 0
     while True :
@@ -62,7 +60,31 @@ def kelimeChecker(yazilanKelime = None) :
     }
     oncekihatalar.clear()
     return lastKelime
-
+def kaliciHafizaEkle() :
+    willAdd = input("Eklenecek kelimeyi giriniz (eğer birden fazla kelime giriyorsanız virgül ile ayırabilirsiniz lütfen boşluk koymayın)").lower().split(',')
+    print("eklemek istediğiniz kelimeler bunlarmı : \n" , willAdd)
+    onay = input("Evet/hayır").lower()
+    if onay == "hayır" :
+        while True :
+            willAdd = input("kelimeleri veya kelimeyi giriniz (virgüllerle ayırın boşluk kullanmayın)").lower().split(',')
+            onay = input("hepsi doğrumu \n Evet/hayır").lower()
+            if onay in ["" , "e" , "evet"] :
+                break
+    for i in range(len(willAdd)) :
+        fileName = willAdd[i] + ".json"
+        if  os.path.exists(fileName) == False :
+            f = open(fileName , "w")
+            f.write(willAdd[i])
+            kelimeAlici(willAdd[i])
+        else :
+           print("bu kelime zaten hafızada varolduğundan eklenemiyor : \n" , willAdd[i])
+def DisHafizayaEris():
+    for filename in os.listdir(folderPath):
+        if filename.endswith(".json"):
+            filePath = os.path.join(folderPath, filename)
+            with open(filePath, "r", encoding="utf-8") as f:
+                data = f.read()
+                kelimeAlici(data)
 def controller() : #kontrol amaçlı zorunlu diğil ama dopamin kullanılmak istiyorsanız zorunlu
     checkTrue = input("doğru düzelti yapıldımı ?").lower()
     if checkTrue in ["evet" , "doğru düzelti yapıldı" , "yapıldı"] :
@@ -76,11 +98,10 @@ def controller() : #kontrol amaçlı zorunlu diğil ama dopamin kullanılmak ist
                 print("Kelimeniz :" , kelime['TrueK'] , "\n" , "Eğer yapılmısa bunlarda Önceki Hatalarınız : \n" , kelime['oncekiHatalar'])
                 return
         kelimeAlici(inThere)
-
 def asker() :
-    print("0. çıkış \n 1. kelime eklemek \n 2. kelime doğrulama \n 3. DB ye ulaşma")
+    print("0. çıkış \n 1. kelime eklemek \n 2. kelime doğrulama \n 3. DB ye ulaşma \n 4. Hafızaya Kalıcı olarak ekle \n")
     ask = input("Ne yapmak istersiniz ? \n")
-    if ask ["0" , "0."] :
+    if ask in ["0" , "0."] :
         quit()
     elif ask in ["1" , "1."]:
         kelimeAlici()
@@ -91,7 +112,8 @@ def asker() :
         controller()
     elif ask in ["3" , "3."] :
         DisHafizayaEris()
-    
-
+    elif ask in ["4" , "4."] :
+        kaliciHafizaEkle()
+        
 while True :
     asker()
