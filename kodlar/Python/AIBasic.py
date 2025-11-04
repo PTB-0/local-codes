@@ -8,7 +8,7 @@ global dopaminRam
 dopaminRam = 0
 kelimeler = []
 oncekihatalar = []
-folderPath = r"C:\Users\USER\Desktop\local-codes"
+folderPath = r"C:\\Users\\USER\Desktop\\local-codes"
 def kelimeAlici(eklenenKelime = None) :
     if eklenenKelime == None  or eklenenKelime == "" :
         eklenenKelime = input("hafızaya eklemek istediğiniz kelimeyi yazınız").lower()
@@ -18,7 +18,8 @@ def kelimeAlici(eklenenKelime = None) :
                 return
         kelime = {
             "TrueK" : eklenenKelime,
-            "oncekiHatalar" : oncekihatalar.copy()
+            "oncekiHatalar" : oncekihatalar.copy() ,
+            "Dopamin" : dopamin
         }
         kelimeler.append(kelime)
     else : 
@@ -28,7 +29,8 @@ def kelimeAlici(eklenenKelime = None) :
                 return
         kelime = {
             "TrueK" : eklenenKelime,
-            "oncekiHatalar" : oncekihatalar.copy()
+            "oncekiHatalar" : oncekihatalar.copy() ,
+            "Dopamin" : dopamin
         }
         kelimeler.append(kelime)
     print(kelime)
@@ -56,7 +58,8 @@ def kelimeChecker(yazilanKelime = None) :
     del kelimeler[lastBiggestIndex]
     kelime = {
         "TrueK" : lastKelime ,
-        "oncekiHatalar" : oncekihatalar.copy()
+        "oncekiHatalar" : oncekihatalar.copy() ,
+        "Dopamin" : dopamin
     }
     oncekihatalar.clear()
     return lastKelime
@@ -71,18 +74,18 @@ def kaliciHafizaEkle() :
             if onay in ["" , "e" , "evet"] :
                 break
     for i in range(len(willAdd)) :
-        fileName = willAdd[i] + ".json"
-        if  os.path.exists(fileName) == False :
-            f = open(fileName , "w")
-            f.write(willAdd[i])
-            kelimeAlici(willAdd[i])
+        fileName = willAdd[i] + ".txt"  
+        if  os.path.exists(fileName) == False :    
+            f = open(fileName , "w")  
+            f.write(willAdd[i])   
+            kelimeAlici(willAdd[i])    
         else :
-           print("bu kelime zaten hafızada varolduğundan eklenemiyor : \n" , willAdd[i])
+           print("bu kelime zaten hafızada varolduğundan eklenemiyor : \n" , willAdd[i])    
 def DisHafizayaEris():
     for filename in os.listdir(folderPath):
-        if filename.endswith(".json"):
+        if filename.endswith(".txt"): 
             filePath = os.path.join(folderPath, filename)
-            with open(filePath, "r", encoding="utf-8") as f:
+            with open(filePath, "r", encoding="cp1254") as f:
                 data = f.read()
                 kelimeAlici(data)
 def controller() : #kontrol amaçlı zorunlu diğil ama dopamin kullanılmak istiyorsanız zorunlu
@@ -114,6 +117,5 @@ def asker() :
         DisHafizayaEris()
     elif ask in ["4" , "4."] :
         kaliciHafizaEkle()
-        
 while True :
     asker()
