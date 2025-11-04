@@ -104,8 +104,10 @@ def controller() : #kontrol amaçlı zorunlu diğil ama dopamin kullanılmak ist
                 return
         kelimeAlici(ram)
 def hepsiniDBekle() :
+    ramList = []
     for kelime in kelimeler :
-        kaliciHafizaEkle(kelime['TrueK'])
+        ramList.append(kelime['TrueK'])
+    kaliciHafizaEkle(ramList)
 def asker() :
     print("0. çıkış \n 1. kelime eklemek \n 2. kelime doğrulama \n 3. DB ye ulaşma \n 4. Hafızaya Kalıcı olarak ekle \n 5. tüm kelimeleri DB ye ekle")
     ask = input("Ne yapmak istersiniz ? \n")
