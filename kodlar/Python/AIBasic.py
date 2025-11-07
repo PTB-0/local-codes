@@ -108,8 +108,13 @@ def hepsiniDBekle() :
     for kelime in kelimeler :
         ramList.append(kelime['TrueK'])
     kaliciHafizaEkle(ramList)
+def yazdir() :
+    print("tüm kelimeler yazdırılıyor")
+    for kelime in kelimeler :
+        print("\n" , kelime)
+    print("hepsi yazıldı")
 def asker() :
-    print("0. çıkış \n 1. kelime eklemek \n 2. kelime doğrulama \n 3. DB ye ulaşma \n 4. Hafızaya Kalıcı olarak ekle \n 5. tüm kelimeleri DB ye ekle")
+    print("0. çıkış \n 1. kelime eklemek \n 2. kelime doğrulama \n 3. DB ye ulaşma \n 4. Hafızaya Kalıcı olarak ekle \n 5. tüm kelimeleri DB ye ekle \n 6 tüm kelimeleri yazdır")
     ask = input("Ne yapmak istersiniz ? \n")
     if ask in ["0" , "0."] :
         quit()
@@ -127,6 +132,9 @@ def asker() :
     elif ask in ["5" , "5."] :
         hepsiniDBekle()
         print("başarı ile eklendi")
+    elif ask in ["6" , "6."] :
+        yazdir()
+        time.sleep(3)
     elif ask in ["-1"] :
         print("dev op center")
         print(kelimeler)

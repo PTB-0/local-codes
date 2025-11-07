@@ -2,7 +2,6 @@ koltuklar = []
 filmler = []
 farkliHarflerSayisi = []
 options = 2 #burda kaç atne seçenek varsa  o sayıyı bunla değiştirin yani eğer 3 seçenek varsa bu sayıyı 3 yapın
-
 def filmDuzenlemek() :
     tekrar = int(input("kaç tane film gireceksiniz"))
     for i in range(tekrar):
@@ -21,8 +20,6 @@ def filmDuzenlemek() :
         filmler.append(yapilanFilm)
         print(filmler)
         koltuklar.clear()
-
-    
 def filmIzlemek() :
     if not filmler :       #not yok demek oluyop burda
         print("Suanda kayıt olabileceğiniz film bulunmamaktadır")
@@ -42,7 +39,6 @@ def filmIzlemek() :
                 secilenFilm["Koltuklar"].remove(secilenKoltuk)
             else :
                 print("BU KOLTUK DOLU VEYA GEÇERSİZ")
-
 def tahmin() :
     farkliHarfler = set("film düzenlemek") ^ set(ask)
     x = len(farkliHarfler)
@@ -75,8 +71,6 @@ def tahmin() :
                 else :
                     filmIzlemek()
                     break
-
-
 while True :
     ask = input("Ne yapmak istersiniz")
     if ask == "film düzenlemek" :  # bu bahsettiğim seyin seçeneği
