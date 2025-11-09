@@ -5,23 +5,23 @@ import os
 import time 
 global dopamin
 global ram
-dopamin = 0
+dopamin = 0 # Gelecekteki arada kalıkndığında hangisinin seçilmseini sağlayacak olan değişken
 kelimeler = []
-oncekihatalar = []
-folderPath = r"C:\\Users\\USER\Desktop\\local-codes"
-def kelimeAlici(eklenenKelime = None) :
-    if eklenenKelime == None  or eklenenKelime == "" :
+oncekihatalar = [] 
+folderPath = r"C:\\Users\\USER\Desktop\\local-codes"  # DB txt veya json dosyalarının olduğu konum
+def kelimeAlici(eklenenKelime = None) :    # Kelimwyi Ram e ekliyor 
+    if eklenenKelime == None  or eklenenKelime == "" :  #kelime çağrılırken girilmişmi girilmemişmi eğer girilmiş ise direk eklemeye başla girilmemiş ise kelimeyi gir
         eklenenKelime = input("hafızaya eklemek istediğiniz kelimeyi yazınız").lower()
-        for kelime in kelimeler :
+        for kelime in kelimeler :    # eklenecek kelime zaten eklimi
             if eklenenKelime == kelime['TrueK'] :
                 print("Bu kelime zaten ekli")
                 return
-        kelime = {
+        kelime = {  # değilse ekle
             "TrueK" : eklenenKelime,
-            "oncekiHatalar" : oncekihatalar.copy() ,
+            "oncekiHatalar" : oncekihatalar.copy() ,   #böylece eğer önceki hatalarda varsa tamamen baştan her kelime ile karşılaştırmak gerekmicek
             "Dopamin" : dopamin
         }
-        kelimeler.append(kelime)
+        kelimeler.append(kelime)   #kelimeler listine ekle
     else : 
         for kelime in kelimeler :
             if kelime['TrueK']  == eklenenKelime :
@@ -34,36 +34,52 @@ def kelimeAlici(eklenenKelime = None) :
         }
         kelimeler.append(kelime)
     print(kelime)
-def kelimeChecker(yazilanKelime = None) :
-    lastBiggestNum = 0
-    while True :
-        if yazilanKelime == ""  or yazilanKelime == None :
+def controller() : #kontrol amaçlı zorunlu diğil ama dopamin kullanılmak istiyorsanız zorunlu
+    checkTrue = input("doğru düzelti yapıldımı ?").lower()
+    if checkTrue in ["evet" , "doğru düzelti yapıldı" , "yapıldı"] :
+        print("Bu harika")
+        dopamin += 10   #doğru yaptığı için ödüllendirildi
+        return 1
+    else :
+        print(kelimeler)
+        inThere = input("kelimeniz burda varmı").lower()   #kelimenin cidden verilerde olup olmadığına bakıyor
+        for kelime in kelimeler :
+            if inThere == kelime['TrueK'] :   #varsa
+                print("Kelimeniz :" , kelime['TrueK'] , "\n" , "Eğer yapılmısa bunlarda Önceki Hatalarınız : \n" , kelime['oncekiHatalar'])  #yazdır
+                return 0
+        kelimeAlici(ram) # eğer bulamaz ise kelimeyi ekliyor
+def kelimeChecker(yazilanKelime = None) :   #kelimenin doğru yazılımının bulunmasını sağlar
+    lastBiggestNum = 0   
+    while True :  
+        if yazilanKelime == ""  or yazilanKelime == None :  # yine eğer kelime boş veya girilmemiş ise bir kelime girmeye zorluyor
             yazilanKelime = input("kelimenizi girin").lower()
         else : 
             ram = yazilanKelime
             break
-    for kelime in kelimeler :
+    for kelime in kelimeler :    #kelimelerin içinde dolaşıyoruz
         i = 0
-        farkliHarfler = set(kelime['TrueK']) ^ set(yazilanKelime)
-        farkNum = len(farkliHarfler)
-        if lastBiggestNum > farkNum or i <= 0 :
-            lastKelime = kelime['TrueK']
-            lastBiggestNum = len(lastKelime)
+        farkliHarfler = set(kelime['TrueK']) ^ set(yazilanKelime)  #farklı olan harfleri liste yapıp koyuyoruz
+        farkNum = len(farkliHarfler)   #önemli olan farklı karekterlerin sayısı olduğu için sayısını alıyoruz
+        if lastBiggestNum > farkNum or i <= 0 :  # daha önceki fark daha fazla ise veya ilk defa yapıyorsam 
+            lastKelime = kelime['TrueK'] # suanki kelimeyi son kelimenin yerine koyuyor
+            lastBiggestNum = len(lastKelime)  #bunun uzunluğunu alıyor
             lastBiggestIndex = kelimeler.index(kelime)
             print(lastBiggestIndex)
         elif lastBiggestNum == farkNum :
             pass
         i += 1 
-    oncekihatalar = kelime['oncekiHatalar']
-    oncekihatalar.append(lastKelime)
-    del kelimeler[lastBiggestIndex]
-    kelime = {
-        "TrueK" : lastKelime ,
-        "oncekiHatalar" : oncekihatalar.copy() ,
-        "Dopamin" : dopamin
-    }
-    oncekihatalar.clear()
-    return lastKelime 
+    check = controller()
+    if check == 1 :
+        oncekihatalar = kelime['oncekiHatalar']
+        oncekihatalar.append(lastKelime)
+        del kelimeler[lastBiggestIndex]
+        kelime = {
+            "TrueK" : lastKelime ,
+            "oncekiHatalar" : oncekihatalar.copy() ,
+            "Dopamin" : dopamin
+        }
+        oncekihatalar.clear()
+        return lastKelime 
 def kaliciHafizaEkle(willAdd = None) :
     if willAdd == "" or willAdd == None :
         willAdd = input("Eklenecek kelimeyi giriniz (eğer birden fazla kelime giriyorsanız virgül ile ayırabilirsiniz lütfen boşluk koymayın)").lower().split(',')
@@ -90,19 +106,6 @@ def DisHafizayaEris():
             with open(filePath, "r", encoding="cp1254") as f:
                 data = f.read()
                 kelimeAlici(data)
-def controller() : #kontrol amaçlı zorunlu diğil ama dopamin kullanılmak istiyorsanız zorunlu
-    checkTrue = input("doğru düzelti yapıldımı ?").lower()
-    if checkTrue in ["evet" , "doğru düzelti yapıldı" , "yapıldı"] :
-        print("Bu harika")
-        dopamin += 10
-    else :
-        print(kelimeler)
-        inThere = input("kelimeniz burda varmı").lower()
-        for kelime in kelimeler :
-            if inThere == kelime['TrueK'] :
-                print("Kelimeniz :" , kelime['TrueK'] , "\n" , "Eğer yapılmısa bunlarda Önceki Hatalarınız : \n" , kelime['oncekiHatalar'])
-                return
-        kelimeAlici(ram)
 def hepsiniDBekle() :
     ramList = []
     for kelime in kelimeler :
@@ -113,6 +116,20 @@ def yazdir() :
     for kelime in kelimeler :
         print("\n" , kelime)
     print("hepsi yazıldı")
+def dopaminTouch(SELECTION = None) :
+    if SELECTION == None :
+        print("bir kelime veya hepsini seçiniz")
+        i = 0
+        for kelime in kelimeler : 
+            print("[",i,"]", kelime['TrueK' , 'Dopamin'])
+            i += 1
+        selec = input("hangisini seçmek istersiniz")
+        for i in range(selec) :
+            a = kelime
+            if i == selec :
+                print(a)
+                change = int(input("dopamini ne yapıcaksınız"))
+                
 def asker() :
     print("0. çıkış \n 1. kelime eklemek \n 2. kelime doğrulama \n 3. DB ye ulaşma \n 4. Hafızaya Kalıcı olarak ekle \n 5. tüm kelimeleri DB ye ekle \n 6 tüm kelimeleri yazdır")
     ask = input("Ne yapmak istersiniz ? \n")
@@ -146,5 +163,6 @@ def asker() :
     else :
         print("dev modunda olduğu için çıkılıyor")
         quit() #bunu koydum çünkü burda kodu başlata bastığımda eğer burdaysa kod başlamıyor onun yerine asker() başlıyor eski versiyonu ile
+    dopamin == 0
 while True :
     asker()
