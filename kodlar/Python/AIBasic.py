@@ -66,7 +66,11 @@ def kelimeChecker(yazilanKelime = None) :   #kelimenin doğru yazılımının bu
             lastBiggestIndex = kelimeler.index(kelime)
             print(lastBiggestIndex)
         elif lastBiggestNum == farkNum :
-            pass
+            if lastKelime['Dopamin'] < kelime['Dopamin'] :
+                lastKelime = kelime['TrueK'] # suanki kelimeyi son kelimenin yerine koyuyor
+                lastBiggestNum = len(lastKelime)  #bunun uzunluğunu alıyor
+                lastBiggestIndex = kelimeler.index(kelime)
+                print(lastBiggestIndex)
         i += 1 
     check = controller()
     if check == 1 :
@@ -117,21 +121,22 @@ def yazdir() :
         print("\n" , kelime)
     print("hepsi yazıldı")
 def dopaminTouch(SELECTION = None) :
-    if SELECTION == None :
+    if SELECTION == None or SELECTION == "":
         print("bir kelime veya hepsini seçiniz")
         i = 0
         for kelime in kelimeler : 
             print("[",i,"]", kelime['TrueK' , 'Dopamin'])
             i += 1
-        selec = input("hangisini seçmek istersiniz")
-        for i in range(selec) :
-            a = kelime
-            if i == selec :
-                print(a)
-                change = int(input("dopamini ne yapıcaksınız"))
-                
+        SELECTION = input("hangisini seçmek istersiniz")
+    for i in range(SELECTION) :
+        a = kelime
+        if i == SELECTION :
+            print(a)
+            change = int(input("dopamini ne yapıcaksınız"))     
+            a['Dopamin'] = change
+            print(a)       
 def asker() :
-    print("0. çıkış \n 1. kelime eklemek \n 2. kelime doğrulama \n 3. DB ye ulaşma \n 4. Hafızaya Kalıcı olarak ekle \n 5. tüm kelimeleri DB ye ekle \n 6 tüm kelimeleri yazdır")
+    print("0. çıkış \n 1. kelime eklemek \n 2. kelime doğrulama \n 3. DB ye ulaşma \n 4. Hafızaya Kalıcı olarak ekle \n 5. tüm kelimeleri DB ye ekle \n 6. tüm kelimeleri yazdır \n 7. dopamini değitir \n")
     ask = input("Ne yapmak istersiniz ? \n")
     if ask in ["0" , "0."] :
         quit()
@@ -152,6 +157,9 @@ def asker() :
     elif ask in ["6" , "6."] :
         yazdir()
         time.sleep(3)
+        print(len(kelimeler) , "tane kelime var")
+    elif ask in ["7" , "7."] :
+        dopaminTouch()
     elif ask in ["-1"] :
         print("dev op center")
         print(kelimeler)
