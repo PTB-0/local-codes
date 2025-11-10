@@ -20,4 +20,8 @@ while True:
                 yazi = input("\n ne yazmak istersiniz ? \n")
                 f = open(pathTam , "+a")
                 f.write(yazi)
+        else :
+            f = open(pathK , "a")
+            yazi = input("yazmak stediğinizi yazınız")
+            f.write(yazi)
 #çalışmıyor dosya döngüsü var

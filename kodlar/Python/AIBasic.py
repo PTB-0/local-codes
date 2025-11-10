@@ -8,7 +8,7 @@ global ram
 dopamin = 0 # Gelecekteki arada kalıkndığında hangisinin seçilmseini sağlayacak olan değişken
 kelimeler = []
 oncekihatalar = [] 
-folderPath = r"C:\\Users\\USER\Desktop\\local-codes"  # DB txt veya json dosyalarının olduğu konum
+folderPath = r"C:\\Users\\USER\Desktop\\local-codes\\kodlar\\Python\\kelimeler"  # DB txt veya json dosyalarının olduğu konum
 def kelimeAlici(eklenenKelime = None) :    # Kelimwyi Ram e ekliyor 
     if eklenenKelime == None  or eklenenKelime == "" :  #kelime çağrılırken girilmişmi girilmemişmi eğer girilmiş ise direk eklemeye başla girilmemiş ise kelimeyi gir
         eklenenKelime = input("hafızaya eklemek istediğiniz kelimeyi yazınız").lower()
@@ -107,7 +107,7 @@ def DisHafizayaEris():
     for filename in os.listdir(folderPath):
         if filename.endswith(".txt"): 
             filePath = os.path.join(folderPath, filename)
-            with open(filePath, "r", encoding="cp1254") as f:
+            with open(filePath, "r", encoding="cp1254") as f:       #nOT ÖNCE AD SONRA DOPAMİN GELECEK ŞEKİLDE GELİŞTİMEM LAZIM
                 data = f.read()
                 kelimeAlici(data)
 def hepsiniDBekle() :
