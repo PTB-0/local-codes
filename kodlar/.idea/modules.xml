@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/java/dersBir/Conventer/Conventer.iml" filepath="$PROJECT_DIR$/java/dersBir/Conventer/Conventer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java/dersBir/dersBir.iml" filepath="$PROJECT_DIR$/java/dersBir/dersBir.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/kodlar.iml" filepath="$PROJECT_DIR$/.idea/kodlar.iml" />
+    </modules>
+  </component>
+</project>
