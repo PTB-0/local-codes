@@ -47,6 +47,7 @@ def controller() : #kontrol amaçlı zorunlu diğil ama dopamin kullanılmak ist
             if inThere == kelime['TrueK'] :   #varsa
                 print("Kelimeniz :" , kelime['TrueK'] , "\n" , "Eğer yapılmısa bunlarda Önceki Hatalarınız : \n" , kelime['oncekiHatalar'])  #yazdır
                 return 0
+        ram = input("kelimenizi giriniz")
         kelimeAlici(ram) # eğer bulamaz ise kelimeyi ekliyor
 def kelimeChecker(yazilanKelime = None) :   #kelimenin doğru yazılımının bulunmasını sağlar
     lastBiggestNum = 0   
@@ -56,6 +57,7 @@ def kelimeChecker(yazilanKelime = None) :   #kelimenin doğru yazılımının bu
         else : 
             ram = yazilanKelime
             break
+    ram = yazilanKelime
     for kelime in kelimeler :    #kelimelerin içinde dolaşıyoruz
         i = 0
         farkliHarfler = set(kelime['TrueK']) ^ set(yazilanKelime)  #farklı olan harfleri liste yapıp koyuyoruz
@@ -134,9 +136,11 @@ def dopaminTouch(SELECTION = None) :
             print(a)
             change = int(input("dopamini ne yapıcaksınız"))     
             a['Dopamin'] = change
-            print(a)       
+            print(a)
+def kararsizSecim() :
+    pass          
 def asker() :
-    print("0. çıkış \n 1. kelime eklemek \n 2. kelime doğrulama \n 3. DB ye ulaşma \n 4. Hafızaya Kalıcı olarak ekle \n 5. tüm kelimeleri DB ye ekle \n 6. tüm kelimeleri yazdır \n 7. dopamini değitir \n")
+    print("0. çıkış \n 1. kelime eklemek \n 2. kelime doğrulama \n 3. DB ye ulaşma \n 4. Hafızaya Kalıcı olarak ekle \n 5. tüm kelimeleri DB ye ekle \n 6. tüm kelimeleri yazdır \n 7. dopamini değitir \n 8. Random sayı seçme")
     ask = input("Ne yapmak istersiniz ? \n")
     if ask in ["0" , "0."] :
         quit()
@@ -160,6 +164,9 @@ def asker() :
         print(len(kelimeler) , "tane kelime var")
     elif ask in ["7" , "7."] :
         dopaminTouch()
+    elif ask in ["8" , "8."]:
+        import randomSelectionReal
+        randomSelectionReal.calis()
     elif ask in ["-1"] :
         print("dev op center")
         print(kelimeler)
