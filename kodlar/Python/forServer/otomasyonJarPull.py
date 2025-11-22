@@ -5,4 +5,4 @@ def verTake(ver = None):
             if ver != None :
                 break
     else :
-        
+        pass
