@@ -12,8 +12,8 @@ def DosyaOlustur() :
             break
     os.path(yol + "\\" + dosyAdi + kac)
     import otomatikServerJarPurpur
-    otomatikServerJarPurpur.jarTaker()
+    ver = otomatikServerJarPurpur.jarTaker()
     src = 'C:\Users\Administrator\Downloads'
     where = yol + '\\' + dosyAdi + kac + ""
-    shutil.copy(src , )
+    shutil.copy(src ,ver )
     
