@@ -1,7 +1,6 @@
-import time
+#END SUPPORT
 import psutil
-global a
-
+global a      # yardımcı değişken
 while True :
     print(" 1 - disk kullanımı \n 2 - Swap usage \n 3 - Cpu usage \n 4 - cores \n 5 - cpu count \n 6-  boot time \n 7 - disk partları")
     a = input("Ne görmek istersiniz \n :")
@@ -20,8 +19,7 @@ while True :
         print(psutil.boot_time)
     elif a == "7" :
         print(psutil.disk_partitions)
-
     cikis = input("çıkış yapmak istermisiniz ? \n :")
     if cikis == "isterim" or cikis == "evet" or cikis == "çıkış" :
         break
-    
+    # bu kod statları gösterir hub projesi içindi

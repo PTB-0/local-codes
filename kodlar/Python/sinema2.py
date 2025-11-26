@@ -1,3 +1,6 @@
+#STARCOD   star kod bişiyi başarmış veya başlatmış demektir
+#V1    versiyon 1 demek
+#ALRF    zaten bitti demek
 koltuklar = []
 filmler = []
 farkliHarflerSayisi = []

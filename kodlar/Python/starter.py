@@ -1,9 +1,10 @@
+#V1
+#ALRF
 import time
 import os
 control = input("hesap makinesi 1 site açma 2 hey 3 heyo 4 bat 5 xox 6")
-
 if control == "1" :
-    os.system (" C:\\Users\\USER\\Desktop\\local-codes\\kodlar\\Python\\hesapMakinesi.py")
+    os.system (" C:\\Users\\USER\\Desktop\\local-codes\\kodlar\\Python\\hesapMakinesi.py")     # bunlar eski kodlar eski HUB projesi içindi
 elif control == "2" :
     os.system(" C:\\Users\\USER\\Desktop\\local-codes\\kodlar\\Python\\siteAcma.py")
 elif control == "3" :

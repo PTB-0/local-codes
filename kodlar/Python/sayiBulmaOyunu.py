@@ -1,3 +1,6 @@
+#BASIC
+#V1
+#ALRF
 from random import *
 import time
 import os

@@ -1,4 +1,4 @@
-import time
+#SUPPORT END
 import turtle
 while True :
     a = input("kaplumbağa ne yapsın")
