@@ -1,8 +1,7 @@
 import time
-a = 0
+a = 0  #yardımcı değişken
 kazanc = 0
-
-def cikis() :
+def cikis() :   #uygulamadan çıkmayı sağlıyor
     global a , kazanc
     wannaCon = input("devammı (E)vet/(H)ayır")
     if wannaCon == "H" :
@@ -15,25 +14,17 @@ def cikis() :
     else :
         print("sanırım yanlış yazıldı sistem kapatılıyor")
         pass
-
 while  a == 0 :
-    
-
     print("xox oyununa hoş geldiniz ne yapmak istersiniz\n")
     modstr = input("1 kurrallar 2 oyna")
-    try :
+    try :   # ne yapacağını seçiyor
         mod = int(modstr)
     except ValueError :
         if modstr == "HEY1234" :
-            print("yes")
-            print("\nwrite \n 123,Ab \n for 100 percent sucsesfful ending the code\n")
-            killer = input("s")
-            killerN = int(killer)
+            print("Şifre artık kaldırıldı")
         else :
-            
             print("sayı girmeniz lazım 1 veya 2 ")
         continue
-        
     if mod == 1 :
         print("harita şu şekildedir:\n")
         print("  |   |   \n")
@@ -73,5 +64,3 @@ while  a == 0 :
             pass
         pass
     pass
-
-time.sleep(2)
