@@ -1,10 +1,10 @@
+#SUPPORT END
 import turtle
 turtle.turtlesize(1)
 global derece
 derece = 0
 global adim
 adim = 0
-
 def adimSecimi() :
     global adim
     try:
@@ -19,9 +19,6 @@ def adimSecimi() :
     except ValueError:
         print("düzgünce bir sayı yaz")
         return
-
-                
-    
 def dereceSecimi() :
     global derece
     try:
@@ -36,7 +33,6 @@ def dereceSecimi() :
     except ValueError:
         print("düzgünce sayı girmeni istedim sadece sayı")
         return
-
 titleNe = input("title ne olsun")
 turtle.title(titleNe)
 while True :

@@ -1,3 +1,4 @@
+#WLOOK sonra bak
 kullanicilar = []
 def hesapEkle(kullaniciSifre , kullaniciAdi):
     kullanici = {}
@@ -31,6 +32,5 @@ def hesapGir(ad , sifre) :
         sifre = input("şifreyi giriniz")
         kullanicilar.pop()
         if sifre == k
-
 while True :
     

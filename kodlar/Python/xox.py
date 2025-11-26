@@ -1,3 +1,5 @@
+#BETA
+#NOTF
 import time
 a = 0  #yardımcı değişken
 kazanc = 0

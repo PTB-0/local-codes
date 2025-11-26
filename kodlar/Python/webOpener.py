@@ -1,3 +1,4 @@
+#ALRF
 import webbrowser
 while True :
     mod = input(" ney apmak istersiniz")

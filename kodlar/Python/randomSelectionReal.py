@@ -1,3 +1,4 @@
+#SUPPORT END
 list = []
 tekrarlar=[]
 global score
