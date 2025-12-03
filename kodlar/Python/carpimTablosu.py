@@ -14,9 +14,15 @@ def mod2():
         num = int(input(""))
 
 def mod3() :
-    for i in range (100):
+    for i in range (101):
         j = i * i
         print( i , j) 
+        ram = i
+        print(i , ram , j)
+        ram = i
+def mod4() :
+    for i in range(101):
+        print(i , i + 1 ,"")
 def secenek():
     ask = input("mod 1 mod 2 mod 3(write as mod1 mod2 mod3)")
     if ask == "mod1" :
@@ -25,4 +31,6 @@ def secenek():
         mod2()
     elif ask == "mod3" :
         mod3()
+    elif ask == "mod4":
+        mod4()
 secenek()
