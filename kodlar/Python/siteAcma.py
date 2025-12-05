@@ -1,5 +1,6 @@
+#V1
+#ALRF
 import os
-
 import time
 import urllib.request
 c = 1
@@ -17,8 +18,6 @@ while c == 1 :
             dosyaAdi = "html.txt"
             continue
         elif (dosyaAdi == "html.txt") == False:
-            
-                
             dosyaAdi = dosyaAdi + ".txt" 
             if os.path.exists(dosyaAdi) == False :
                 f = open(dosyaAdi , "x")
@@ -33,9 +32,7 @@ while c == 1 :
                         os.remove(dosyaAdi)
                         f = open(dosyaAdi , "x")
                     else :
-                        continue
-                    
-                        
+                        continue 
                 f  = open(dosyaAdi , "a")
                 f.write(yazi)
             else :
@@ -48,7 +45,6 @@ while c == 1 :
             elif os.path.exists(dosyaAdi) == True :
                 f  = open(dosyaAdi , "a")
                 f.write(yazi)
-            
     elif istek == "hayır" or istek == "gerek yok" or istek == "0":
         print("tamam")
         print("şimdi sitenin kodunu atıyorum \n")
@@ -57,7 +53,6 @@ while c == 1 :
         print("dediğin anlaşılmadı normal şekilde devam ediliyor")
     b = input("hey devammi 1/0")
     a = int(b)
-    
     if a == 0 :
         time.sleep(1)
         c = 0

@@ -1,8 +1,9 @@
+#ALRF
 import datetime
 import time
 import turtle
 b = datetime.date.today()
-a = datetime.date(2026 , 5 , 26)
+a = datetime.date(2026 , 5 , 26)   #GTA 6 ÇIKIŞ TARİHİ
 print( a - b)
 z = 30
 c = -30

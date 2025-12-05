@@ -1,3 +1,4 @@
+#END OF SUPPORT / SUPPORT END bunlar aynı şey
 global a 
 global kullaniciSifre
 global kullaniciAdi
