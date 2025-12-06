@@ -34,5 +34,4 @@ while True :
         else :
             print("yanlış bir şey oldugu için çıkılıyor")
             break
-
 system("C:\\Users\\USER\\Desktop\\local-codes\\kodlar\\Python\\pythonTest.py")
