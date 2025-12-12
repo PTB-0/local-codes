@@ -10,6 +10,12 @@ def seceneklerOlustur(tur = None) :
                 "dopamin" : dopamin
             }
             listOfOps.append(opSoz)
-            opSoz.clear()
+        print(listOfOps)
     else :
-        
+        pass
+while True :
+    ask.lower = "ne yapmak istersiniz"
+    if  ask == "doğal random":
+        seceneklerOlustur()
+    elif ask
+        pass
