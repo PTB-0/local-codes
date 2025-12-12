@@ -14,8 +14,9 @@ def seceneklerOlustur(tur = None) :
     else :
         pass
 while True :
-    ask.lower = "ne yapmak istersiniz"
+    ask = input("ne yapmak istersiniz")
+    ask.lower()
     if  ask == "doğal random":
         seceneklerOlustur()
-    elif ask
+    elif ask == "" :
         pass
