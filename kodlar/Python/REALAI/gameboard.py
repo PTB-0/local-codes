@@ -1,41 +1,15 @@
 import random
 board = []
-def crateBoard() :
-    for i in range(101):
-        board.append(0)
-    for i in range (30) :    
-        blockNum = random.randint(0 , 99)
-        board.pop(blockNum)
-        board.insert(blockNum , 1)
-    for i in board :
-        theStatus = board.pop(i)
-        Yapsis = 1 ;
-        if i >= 10 and i < 20 :
-            Yapsis = 2 
-        elif i >= 20  and i < 30 :
-            Yapsis = 3
-        elif i >= 30 and i < 40 :
-            Yapsis = 4
-        elif i >= 40 and i < 50 :
-            Yapsis = 5
-        elif i >= 50 and i < 60 :
-            Yapsis = 6 
-        elif i >= 60 and i < 70 :
-            Yapsis = 7
-        elif i >= 70 and i < 80 :
-            Yapsis = 8 
-        elif i >= 80 and i < 90 :
-            Yapsis = 9
-        elif i >= 90 and i < 100 :
-            Yapsis = 10 
-        else :
-            Yapsis = 1
+def createBoard():
+    for i in range(100):
         block = {
-            "status" : theStatus ,
-            "cordsX" : i / 10 ,
-            "cordsY" : Yapsis ,
-            "blockID" : i 
+            "id": i,
+            "status": 0,
+            "x": i % 10,
+            "y": i // 10
         }
+        board.append(block)
+    return board
 def spawnArea() :
     EasyB = board.copy()
     chrIsSpawnble = False
@@ -63,5 +37,12 @@ def AttackerSpawn() :
         for block in board :
             if block['status'] == 0 :
                 block['status'] = 2
-    
-                
+def CanIWalk(ROTA = None):
+       if ROTA == None or ROTA == 1 :
+           for block in board :
+               if block['status'] == 3 : 
+                   pass
+def CanISee() :
+    pass
+
+print(createBoard())
