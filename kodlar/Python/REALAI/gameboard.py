@@ -54,6 +54,14 @@ def WhatIsThisStatus(blockID , returnWanted = None) :
                 print("block dolu (engel)")
             elif block['status']  == 2:
                 print("block dolu (düşman)")
+            elif block['status'] == 3 :
+                print("burada AI var")
             if returnWanted == None or returnWanted == 1 : 
-                
+                return block['status']
 def AttackerSpawn() :
+    for i in range(5) :
+        for block in board :
+            if block['status'] == 0 :
+                block['status'] = 2
+    
+                
