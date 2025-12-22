@@ -1,3 +1,18 @@
+"""
+CanISee için :
+        # # #
+        # 1 #
+        3 # #
+        3 : AI
+        1 : Engel
+        AI ın blockundan başlayarak sırayla x + 1 x + 2  diye bakıyor sınırda geldiğide artık aı dan y yi artırıyor yani ilk başta şu oluyor :
+                                                                            K  ?  ?
+                                                                            K  ?  ?
+                                                                            3  K  K
+                                                                            SUAN ? işaretleri bilinmez 
+                                                                            sonra AI ın x ini ve y sini bir artırıyor engel var o zaman o nun kalanını yapamaz durdur o tarafı gibi
+"""
+#######################
 import random
 board = []
 def createBoard():
@@ -47,7 +62,13 @@ def CanIWalk(ROTA = None):
                     return 1 ;          #onay verildi true
                 elif block['x'] == AIinIt['x'] and block['y'] - 1 == AIinIt['y'] and not block['status'] == 0 : 
                     return 0 ;          # onay verilmedi false 
-def CanISee() :
+def CanISee() :           # bunu şöyle yapabiliriz BAKINIZ SATIR 1
     pass
 def bugCheck(ONE =None , Two = None):
     print(createBoard())
+
+
+def Worker():   # ilerde Starterdan emri aldıktan sonra dosyaları toplayıp gereken yere vericek
+    pass
+def Starter():  # İlerde motoru çalıştıran olucak yönetici olucak
+    pass
