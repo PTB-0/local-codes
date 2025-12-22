@@ -88,9 +88,11 @@ def CanISee() :     # bunu şöyle yapabiliriz BAKINIZ SATIR 1
                     for block in board :    # bu kısım  sağ x e bakıyor 
                         if (not AIinIt['x']  >= 9 )and block['x'] - i == AIinIt['x'] :
                             block['vs'] = 1 ;
-                            i += 1 
+                        i += 1 
+                    i = 0
                     for block in board :     # bu kısım sol x e bakıyor
-                        if()
+                        if block['x'] + i == AIinIt['x']  and not AIinIt <= 1 :
+                            
 def bugCheck(ONE =None , Two = None):  # ilerde sorunların nerde olduğunu nalamak için blackBox u tamamen kapatan ve her bir detayı veren defleri tek tek çalıştıran komutu veren def
     print(createBoard())
     print()
