@@ -11,12 +11,20 @@ CanISee için :
                                                                             3  K  K
                                                                             SUAN ? işaretleri bilinmez 
                                                                             sonra AI ın x ini ve y sini bir artırıyor engel var o zaman o nun kalanını yapamaz durdur o tarafı gibi
+
+isVisible Kodları ve anlamları :
+0 : hayır görünmüyor
+1 : evet görünüyor
+9 : bilinmiyor 
+2 3 4 5 6 7 8 : şuanki versionda bunların bir anlamı yok ama ilerde sisli bulanık gibi olabilmesi için buraları boş bıraktım
 """
-#######################
 import random
+global whereWeIn
+whereWeIn = 0
 board = []
+IcanBeThis = [0 , 1 , 2 , 3]
 def createBoard():
-    isVisible = 9 ;     # burda bilmiyorum diyorum
+    isVisible = 9 ;     # burda bilmiyorum diyorum görünürlüğe neden 9 lütfen satır 15 e bakınız
     for i in range(100):
         block = {
             "ID": i,
@@ -26,15 +34,19 @@ def createBoard():
             "vs" : isVisible 
         }
         board.append(block)
+    whereWeIn = 1
     return board
-def spawnArea() :
-    EasyB = board.copy()
-    chrIsSpawnble = False
-    while chrIsSpawnble == False :
-        thenum = random.randint(0,99)
-        chrSpawnArea = EasyB.pop(thenum)
-        if chrSpawnArea == 0 : 
-            chrIsSpawnble = True
+def setItsMe(MyBlock , TYPE) :   #blockunu atıyorsun ve ne olduğunu (duvar AI boşluk veya düşman)
+    if type in IcanBeThis :
+        MyBlock['status'] = TYPE
+def spawnArea() :   #soft lock only ONE AI can spawn
+        if whereWeIn == 2  :
+            for block in board :
+                if block['status'] == 3 :
+                    quit()
+                elif block['status'] == 0 : 
+                    setItsMe(block)
+        return 0     # YAPAMAM diyor
 def WhatIsThisStatus(blockID , returnWanted = None) :
     for block in board :
         if blockID == block['ID'] :
@@ -50,6 +62,7 @@ def WhatIsThisStatus(blockID , returnWanted = None) :
             if returnWanted == None or returnWanted == 1 : 
                 return block['status']
 def AttackerSpawn() :
+    whereWeIn = 2
     for i in range(5) :
         for block in board :
             if block['status'] == 0 :
@@ -65,17 +78,22 @@ def CanIWalk(ROTA = None):
                 elif block['x'] == AIinIt['x'] and block['y'] - 1 == AIinIt['y'] and not block['status'] == 0 : 
                     return 0 ;          # onay verilmedi false 
 def CanISee() :     # bunu şöyle yapabiliriz BAKINIZ SATIR 1
-    checker = True 
+    checker = True   #Kodun en hızlı olması gereken yerlerinden biri bu def yani CanISee func Çok önemli
     while checker :
         for block in board :
             if block['status'] == 3 :
                 AIinIt = block
                 i = 0
-                for block in board :    # bu kısım  
-                    if (not AIinIt['x']  >= 9 )and block['x'] - i == AIinIt['x'] :
-                        block['vs'] = 1 ;
+                while 100 :   #şimdilik sadece kodun mantığı otursun diye burda
+                    for block in board :    # bu kısım  sağ x e bakıyor 
+                        if (not AIinIt['x']  >= 9 )and block['x'] - i == AIinIt['x'] :
+                            block['vs'] = 1 ;
+                            i += 1 
+                    for block in board :     # bu kısım sol x e bakıyor
+                        if()
 def bugCheck(ONE =None , Two = None):  # ilerde sorunların nerde olduğunu nalamak için blackBox u tamamen kapatan ve her bir detayı veren defleri tek tek çalıştıran komutu veren def
     print(createBoard())
+    print()
 def Worker():   # ilerde Starterdan emri aldıktan sonra dosyaları toplayıp gereken yere vericek
     pass
 def Starter():  # İlerde motoru çalıştıran olucak yönetici olucak
