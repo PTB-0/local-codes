@@ -3,7 +3,7 @@ board = []
 def createBoard():
     for i in range(100):
         block = {
-            "id": i,
+            "ID": i,
             "status": 0,
             "x": i % 10,
             "y": i // 10
@@ -20,7 +20,7 @@ def spawnArea() :
             chrIsSpawnble = True
 def WhatIsThisStatus(blockID , returnWanted = None) :
     for block in board :
-        if blockID == block['blockID'] :
+        if blockID == block['ID'] :
             print("bu blockun statüsü :" , block['status'])
             if block['status'] == 0 :
                 print("block boş")
@@ -39,10 +39,15 @@ def AttackerSpawn() :
                 block['status'] = 2
 def CanIWalk(ROTA = None):
        if ROTA == None or ROTA == 1 :
-           for block in board :
+            for block in board :
                if block['status'] == 3 : 
-                   pass
+                   AIinIt = block
+            for block in board :
+                if block['x'] == AIinIt['x'] and block['y'] - 1 == AIinIt['y'] and block['status'] == 0 :
+                    return 1 ;          #onay verildi true
+                elif block['x'] == AIinIt['x'] and block['y'] - 1 == AIinIt['y'] and not block['status'] == 0 : 
+                    return 0 ;          # onay verilmedi false 
 def CanISee() :
     pass
-
-print(createBoard())
+def bugCheck(ONE =None , Two = None):
+    print(createBoard())
