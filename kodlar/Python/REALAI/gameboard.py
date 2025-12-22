@@ -16,12 +16,14 @@ CanISee için :
 import random
 board = []
 def createBoard():
+    isVisible = 9 ;     # burda bilmiyorum diyorum
     for i in range(100):
         block = {
             "ID": i,
-            "status": 0,
+            "status": 0 ,
             "x": i % 10,
-            "y": i // 10
+            "y": i // 10 ,
+            "vs" : isVisible 
         }
         board.append(block)
     return board
@@ -62,12 +64,18 @@ def CanIWalk(ROTA = None):
                     return 1 ;          #onay verildi true
                 elif block['x'] == AIinIt['x'] and block['y'] - 1 == AIinIt['y'] and not block['status'] == 0 : 
                     return 0 ;          # onay verilmedi false 
-def CanISee() :           # bunu şöyle yapabiliriz BAKINIZ SATIR 1
-    pass
-def bugCheck(ONE =None , Two = None):
+def CanISee() :     # bunu şöyle yapabiliriz BAKINIZ SATIR 1
+    checker = True 
+    while checker :
+        for block in board :
+            if block['status'] == 3 :
+                AIinIt = block
+                i = 0
+                for block in board :    # bu kısım  
+                    if (not AIinIt['x']  >= 9 )and block['x'] - i == AIinIt['x'] :
+                        block['vs'] = 1 ;
+def bugCheck(ONE =None , Two = None):  # ilerde sorunların nerde olduğunu nalamak için blackBox u tamamen kapatan ve her bir detayı veren defleri tek tek çalıştıran komutu veren def
     print(createBoard())
-
-
 def Worker():   # ilerde Starterdan emri aldıktan sonra dosyaları toplayıp gereken yere vericek
     pass
 def Starter():  # İlerde motoru çalıştıran olucak yönetici olucak
