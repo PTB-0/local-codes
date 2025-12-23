@@ -17,12 +17,15 @@ isVisible Kodları ve anlamları :
 1 : evet görünüyor
 9 : bilinmiyor 
 2 3 4 5 6 7 8 : şuanki versionda bunların bir anlamı yok ama ilerde sisli bulanık gibi olabilmesi için buraları boş bıraktım
+                                                                            PLAN
+                oyuncu AI ile Düşman AI in aynı yerden gelmesi sorun oluştururmu
+                mapın hepsini araması çok yanlış onun yerine o yerin arkasını aramasın
 """
 import random
 global whereWeIn
 debuggerMode = 0
 whereWeIn = 0
-board = []
+board = []   #Oyun Alanı
 IcanBeThis = [0 , 1 , 2 , 3]
 def createBoard():
     global whereWeIn
@@ -123,3 +126,12 @@ def Worker():   # ilerde Starterdan emri aldıktan sonra dosyaları toplayıp ge
     pass
 def Starter():  # İlerde motoru çalıştıran olucak yönetici olucak
     pass
+class Fighter :
+    def __init__(self , hp , vs , x,y ):
+        self.hp = hp 
+        self.vs = vs
+        self.x = x
+        self.y = y
+    def move(self , dx , dy) :
+        self.x += dx 
+        self.y += dy 
