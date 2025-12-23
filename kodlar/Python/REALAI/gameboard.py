@@ -20,10 +20,12 @@ isVisible Kodları ve anlamları :
 """
 import random
 global whereWeIn
+debuggerMode = 0
 whereWeIn = 0
 board = []
 IcanBeThis = [0 , 1 , 2 , 3]
 def createBoard():
+    global whereWeIn
     isVisible = 9 ;     # burda bilmiyorum diyorum görünürlüğe neden 9 lütfen satır 15 e bakınız
     for i in range(100):
         block = {
@@ -36,17 +38,19 @@ def createBoard():
         board.append(block)
     whereWeIn = 1
     return board
-def setItsMe(MyBlock , TYPE) :   #blockunu atıyorsun ve ne olduğunu (duvar AI boşluk veya düşman)
-    if type in IcanBeThis :
-        MyBlock['status'] = TYPE
+def setItsMe(MyBlock , tip) :   #blockunu atıyorsun ve ne olduğunu (duvar AI boşluk veya düşman)
+    if tip in IcanBeThis :
+        MyBlock['status'] = tip
+        return 1 
 def spawnArea() :   #soft lock only ONE AI can spawn
         if whereWeIn == 2  :
             for block in board :
                 if block['status'] == 3 :
-                    quit()
+                    block['status'] == 0 
                 elif block['status'] == 0 : 
-                    setItsMe(block)
-        return 0     # YAPAMAM diyor
+                    what = setItsMe(block , 3)
+                    break
+            if what != 1 : return 0     # YAPAMAM diyor
 def WhatIsThisStatus(blockID , returnWanted = None) :
     for block in board :
         if blockID == block['ID'] :
@@ -61,12 +65,22 @@ def WhatIsThisStatus(blockID , returnWanted = None) :
                 print("burada AI var")
             if returnWanted == None or returnWanted == 1 : 
                 return block['status']
-def AttackerSpawn() :
+def AttackerSpawn(wantedBlocks = 5) :
+    global whereWeIn
     whereWeIn = 2    #kaçıncı basamaktayız ona bakıyor
-    for i in range(5) :
-        for block in board :
-            if block['status'] == 0 :
+    AttackerCounter = 0
+    BlockCounter = 0     
+    for block in board :
+        if BlockCounter >= wantedBlocks and AttackerCounter >= 2 :  #en az 2 düşman olmalı bu zorunluluk
+            break
+        BlockCounter += 1
+        if AttackerCounter >= 5 :
+            break
+        elif block['status'] == 0 :
+            luckyGuy = random.randint(0 , 100)
+            if (5 > luckyGuy or 90 < luckyGuy) : 
                 block['status'] = 2
+                AttackerCounter += 1
 def CanIWalk(ROTA = None):
        if ROTA == None or ROTA == 1 :
             for block in board :
@@ -101,6 +115,8 @@ def CanISee() :     # bunu şöyle yapabiliriz BAKINIZ SATIR 1
                         if block['y'] - i == AIinIt['y'] and not AIinIt >= 9 :
                             block['vs'] = 1
 def bugCheck(ONE =None , Two = None):  # ilerde sorunların nerde olduğunu nalamak için blackBox u tamamen kapatan ve her bir detayı veren defleri tek tek çalıştıran komutu veren def
+    global debuggerMode
+    debuggerMode = 1 
     print(createBoard())
     print()
 def Worker():   # ilerde Starterdan emri aldıktan sonra dosyaları toplayıp gereken yere vericek
