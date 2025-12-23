@@ -62,7 +62,7 @@ def WhatIsThisStatus(blockID , returnWanted = None) :
             if returnWanted == None or returnWanted == 1 : 
                 return block['status']
 def AttackerSpawn() :
-    whereWeIn = 2
+    whereWeIn = 2    #kaçıncı basamaktayız ona bakıyor
     for i in range(5) :
         for block in board :
             if block['status'] == 0 :
