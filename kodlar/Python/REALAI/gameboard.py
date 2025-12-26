@@ -134,14 +134,24 @@ class Fighter :
         self.x = x
         self.y = y
         self.tip = tip
-        if tip == ""
+        if tip == "player" :
+            self.MyGunDmg = 15
+            self.hp = 150 
+            self.shield = 200   #sadece uzak dövüşte etkili
     def move(self , dx , dy) :
         self.x += dx 
         self.y += dy
-    def takeDmg(self , dmg) :
-        self.dmg = dmg 
-        self.crit = 19  
-        self.hp -= dmg * 19 
+    def takeDmg(self , dmg , warType , combos) :
+        if warType == "classic" :
+            self.dmg = dmg
+            if self.shield > 0  :
+                dmg = self.shield - ( (dmg ** 2) - 10)/ 10  
+            self.hp -= dmg 
+        else :
+            self.dmg = dmg 
+            dmg = 5.1 * combos + dmg 
+            self.hp -= dmg 
+        return self.didIdied()    # öldüren adama skor eklemek için
     def didIdied(self) :
         if self.hp <= 0  : 
             return 1    #ölmüş.
@@ -149,10 +159,12 @@ class Fighter :
             return 0  # ölmemiş
     def HurtAndHit() :    #yakın dövüş daha sonra
         pass 
-    def hit(self , MyGunDmg) :
-        return MyGunDmg 
+    def hit(self) :
+        return self.MyGunDmg 
     def makeABase():
         pass
+    def vs(self):
+        
 def makeMyChr(whatsType):
     if whatsType in chrsAtTheGame :
-        charWhichIsBlessed = Fighter()    # have nothing speacil bu sadece bizim tarafımızdan doğrudan oluşturulduğu için bleesed
+        charWhichIsBlessed = Fighter(whatsType)    # have nothing speacil bu sadece bizim tarafımızdan doğrudan oluşturulduğu için bleesed
