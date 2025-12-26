@@ -188,5 +188,4 @@ def shoot(mychrID) :
     for chrCRATE in chrListf :
         if mychrID == chrCRATE['ID'] :
             myChr = chrCRATE['MyChr']
-            
 #LATES
