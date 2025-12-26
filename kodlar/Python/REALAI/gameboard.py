@@ -27,6 +27,12 @@ debuggerMode = 0
 whereWeIn = 0
 board = []   #Oyun Alanı
 IcanBeThis = [0 , 1 , 2 , 3]
+<<<<<<< Updated upstream
+=======
+chrsAtTheGame = ["player" , "AtackerNormal"]  # suanlık idare
+chrsAtTheGameButWhitDATA = [] # we will use later ve chrsAtTheGame e gerek kalmıcak   UNUTMA CLASSTAKİ TİP AYARINI DEĞİŞTİRMEN LAZIM BUNU KULLANCAKSAN !!!!
+playerList = []
+>>>>>>> Stashed changes
 def createBoard():
     global whereWeIn
     isVisible = 9 ;     # burda bilmiyorum diyorum görünürlüğe neden 9 lütfen satır 15 e bakınız
@@ -94,29 +100,38 @@ def CanIWalk(ROTA = None):
                     return 1 ;          #onay verildi true
                 elif block['x'] == AIinIt['x'] and block['y'] - 1 == AIinIt['y'] and not block['status'] == 0 : 
                     return 0 ;          # onay verilmedi false 
-def CanISee() :     # bunu şöyle yapabiliriz BAKINIZ SATIR 1
-    checker = True   #Kodun en hızlı olması gereken yerlerinden biri bu def yani CanISee func Çok önemli
-    while checker :
+def CanISee(vers , x = None , y = None) :     # bunu şöyle yapabiliriz BAKINIZ SATIR 1
+    if vers == 1 :
+        checker = True   #Kodun en hızlı olması gereken yerlerinden biri bu def yani CanISee func Çok önemli
+        while checker :
+            for block in board :
+                if block['status'] == 3 :
+                    AIinIt = block
+                    i = 1
+                    while 100 :   #şimdilik sadece kodun mantığı otursun diye burda
+                        for block in board :    # bu kısım  sağ x e bakıyor 
+                            if (not AIinIt['x']  >= 9 )and block['x'] - i == AIinIt['x'] :
+                                block['vs'] = 1 
+                            i += 1 
+                        i = 1
+                        for block in board :     # bu kısım sol x e bakıyor
+                            if block['x'] + i == AIinIt['x']  and not AIinIt <= 1 :
+                                block['vs'] = 1 
+                        i = 1
+                        for block in board :
+                            if block['y'] + i == AIinIt['y'] and not AIinIt <= 1 :
+                                block['vs'] = 1
+                        for block in board :
+                            if block['y'] - i == AIinIt['y'] and not AIinIt >= 9 :
+                                block['vs'] = 1
+    elif vers == 2 :
         for block in board :
-            if block['status'] == 3 :
-                AIinIt = block
-                i = 1
-                while 100 :   #şimdilik sadece kodun mantığı otursun diye burda
-                    for block in board :    # bu kısım  sağ x e bakıyor 
-                        if (not AIinIt['x']  >= 9 )and block['x'] - i == AIinIt['x'] :
-                            block['vs'] = 1 
-                        i += 1 
-                    i = 1
-                    for block in board :     # bu kısım sol x e bakıyor
-                        if block['x'] + i == AIinIt['x']  and not AIinIt <= 1 :
-                            block['vs'] = 1 
-                    i = 1
-                    for block in board :
-                        if block['y'] + i == AIinIt['y'] and not AIinIt <= 1 :
-                            block['vs'] = 1
-                    for block in board :
-                        if block['y'] - i == AIinIt['y'] and not AIinIt >= 9 :
-                            block['vs'] = 1
+            if block['x'] == x and block['y'] == y :
+                hereAmI = block
+        xApsis = True 
+        yApsis = False 
+        while xApsis :
+            
 def bugCheck(ONE =None , Two = None):  # ilerde sorunların nerde olduğunu nalamak için blackBox u tamamen kapatan ve her bir detayı veren defleri tek tek çalıştıran komutu veren def
     global debuggerMode
     debuggerMode = 1 
@@ -134,4 +149,38 @@ class Fighter :
         self.y = y
     def move(self , dx , dy) :
         self.x += dx 
+<<<<<<< Updated upstream
         self.y += dy 
+=======
+        self.y += dy
+    def takeDmg(self , dmg , warType , combos) :
+        if warType == "classic" :
+            self.dmg = dmg
+            if self.shield > 0  :
+                dmg = self.shield - ( (dmg ** 2) - 10)/ 10  
+            self.hp -= dmg 
+        else :
+            self.dmg = dmg 
+            dmg = 5.1 * combos + dmg 
+            self.hp -= dmg 
+        return self.didIdied()    # öldüren adama skor eklemek için
+    def didIdied(self) :
+        if self.hp <= 0  : 
+            return 1    #ölmüş.
+        else :
+            return 0  # ölmemiş
+    def HurtAndHit() :    #yakın dövüş daha sonra
+        pass 
+    def hit(self) :
+        return self.MyGunDmg 
+    def makeABase():
+        pass
+    def vs(self):
+        x = self.x
+        y = self.y
+        CanISee()
+def makeMyChr(whatsType):
+    if whatsType in chrsAtTheGame :
+        charWhichIsBlessed = Fighter(whatsType)    # have nothing speacil bu sadece bizim tarafımızdan doğrudan oluşturulduğu için bleesed
+def shoot
+>>>>>>> Stashed changes
