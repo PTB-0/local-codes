@@ -27,12 +27,9 @@ debuggerMode = 0
 whereWeIn = 0
 board = []   #Oyun Alanı
 IcanBeThis = [0 , 1 , 2 , 3]
-<<<<<<< Updated upstream
-=======
 chrsAtTheGame = ["player" , "AtackerNormal"]  # suanlık idare
 chrsAtTheGameButWhitDATA = [] # we will use later ve chrsAtTheGame e gerek kalmıcak   UNUTMA CLASSTAKİ TİP AYARINI DEĞİŞTİRMEN LAZIM BUNU KULLANCAKSAN !!!!
-playerList = []
->>>>>>> Stashed changes
+chrListf = ["1"]
 def createBoard():
     global whereWeIn
     isVisible = 9 ;     # burda bilmiyorum diyorum görünürlüğe neden 9 lütfen satır 15 e bakınız
@@ -149,9 +146,6 @@ class Fighter :
         self.y = y
     def move(self , dx , dy) :
         self.x += dx 
-<<<<<<< Updated upstream
-        self.y += dy 
-=======
         self.y += dy
     def takeDmg(self , dmg , warType , combos) :
         if warType == "classic" :
@@ -181,6 +175,18 @@ class Fighter :
         CanISee()
 def makeMyChr(whatsType):
     if whatsType in chrsAtTheGame :
+        a = 0      # bu ıd için lazım
+        for chrCRATE in chrListf :
+            a += 1
         charWhichIsBlessed = Fighter(whatsType)    # have nothing speacil bu sadece bizim tarafımızdan doğrudan oluşturulduğu için bleesed
-def shoot
->>>>>>> Stashed changes
+        chrCREATE = {
+            "ID" : a + 1 ,
+            "MyChr" : charWhichIsBlessed,              # şimdi görüyorum ki büyük ihtimal oluşturma sistemi bu olucak 
+            "ChrType" : 
+            }
+def shoot(mychrID) :
+    for chrCRATE in chrListf :
+        if mychrID == chrCRATE['ID'] :
+            myChr = chrCRATE['MyChr']
+            
+    
