@@ -37,7 +37,7 @@ board = []   #Oyun Alanı
 IcanBeThis = [0 , 1 , 2 , 3]
 chrsAtTheGame = ["player" , "AtackerNormal"]  # suanlık idare
 chrsAtTheGameButWhitDATA = [] # we will use later ve chrsAtTheGame e gerek kalmıcak   UNUTMA CLASSTAKİ TİP AYARINI DEĞİŞTİRMEN LAZIM BUNU KULLANCAKSAN !!!!
-chrListf = ["1"]
+chrListf = []
 def createBoard():
     global whereWeIn
     isVisible = 9 ;     # burda bilmiyorum diyorum görünürlüğe neden 9 lütfen satır 15 e bakınız
@@ -105,7 +105,7 @@ def CanIWalk(ROTA = None):
                     return 1 ;          #onay verildi true
                 elif block['x'] == AIinIt['x'] and block['y'] - 1 == AIinIt['y'] and not block['status'] == 0 : 
                     return 0 ;          # onay verilmedi false 
-def CanISee(vers , x = None , y = None) :     # bunu şöyle yapabiliriz BAKINIZ SATIR 1
+def CanISee(vers , myID  , x = None , y = None ,) :     # bunu şöyle yapabiliriz BAKINIZ SATIR 1    myID eğer vers 1 işe buraya 0 yazılabilir
     if vers == 1 :
         checker = True   #Kodun en hızlı olması gereken yerlerinden biri bu def yani CanISee func Çok önemli
         while checker :
@@ -136,6 +136,9 @@ def CanISee(vers , x = None , y = None) :     # bunu şöyle yapabiliriz BAKINIZ
         xApsis = True 
         yApsis = False 
         while xApsis :
+            for block in board :
+                if block['status'] != 0 and   :
+                    
             #TAMAMLA
 def bugCheck(ONE =None , Two = None):  # ilerde sorunların nerde olduğunu nalamak için blackBox u tamamen kapatan ve her bir detayı veren defleri tek tek çalıştıran komutu veren def
     global debuggerMode
