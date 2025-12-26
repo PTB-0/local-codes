@@ -206,4 +206,4 @@ def doingSomething(mychrID):
             control += 1    #bu kaç tane bu ID den olduguna bakarak sorunları engelliyor
         if control >= 2 :
             return {"err" : 110 , "where" :"doingSomething" , "info" : "duplicate" }       # Error numaraları için lütfen satır 23 e bakın
-#LATES
+#LATEST
