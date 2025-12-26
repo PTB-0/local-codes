@@ -28,6 +28,8 @@ debuggerMode = 0
 whereWeIn = 0
 board = []   #Oyun Alanı
 IcanBeThis = [0 , 1 , 2 , 3]
+chrsAtTheGame = ["player" , "AtackerNormal"]  # suanlık idare
+chrsAtTheGameButWhitDATA = [] # we will use later ve chrsAtTheGame e gerek kalmıcak   UNUTMA CLASSTAKİ TİP AYARINI DEĞİŞTİRMEN LAZIM BUNU KULLANCAKSAN !!!!
 def createBoard():
     global whereWeIn
     isVisible = 9 ;     # burda bilmiyorum diyorum görünürlüğe neden 9 lütfen satır 15 e bakınız
@@ -128,11 +130,11 @@ def Worker():   # ilerde Starterdan emri aldıktan sonra dosyaları toplayıp ge
 def Starter():  # İlerde motoru çalıştıran olucak yönetici olucak
     pass
 class Fighter :
-    def __init__(self , hp , vs , x,y ):
-        self.hp = hp 
-        self.vs = vs
+    def __init__(self ,tip , x,y ):
         self.x = x
         self.y = y
+        self.tip = tip
+        if tip == ""
     def move(self , dx , dy) :
         self.x += dx 
         self.y += dy
@@ -149,4 +151,8 @@ class Fighter :
         pass 
     def hit(self , MyGunDmg) :
         return MyGunDmg 
-    
+    def makeABase():
+        pass
+def makeMyChr(whatsType):
+    if whatsType in chrsAtTheGame :
+        charWhichIsBlessed = Fighter()    # have nothing speacil bu sadece bizim tarafımızdan doğrudan oluşturulduğu için bleesed
