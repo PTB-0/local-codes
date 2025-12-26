@@ -21,6 +21,7 @@ isVisible Kodları ve anlamları :
                 oyuncu AI ile Düşman AI in aynı yerden gelmesi sorun oluştururmu
                 mapın hepsini araması çok yanlış onun yerine o yerin arkasını aramasın
 """
+# Bu Yeni Versiyon yani FORK2
 import random
 global whereWeIn
 debuggerMode = 0
@@ -134,4 +135,18 @@ class Fighter :
         self.y = y
     def move(self , dx , dy) :
         self.x += dx 
-        self.y += dy 
+        self.y += dy
+    def takeDmg(self , dmg) :
+        self.dmg = dmg 
+        self.crit = 19  
+        self.hp -= dmg * 19 
+    def didIdied(self) :
+        if self.hp <= 0  : 
+            return 1    #ölmüş.
+        else :
+            return 0  # ölmemiş
+    def HurtAndHit() :    #yakın dövüş daha sonra
+        pass 
+    def hit(self , MyGunDmg) :
+        return MyGunDmg 
+    
