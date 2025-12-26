@@ -20,6 +20,14 @@ isVisible Kodları ve anlamları :
                                                                             PLAN
                 oyuncu AI ile Düşman AI in aynı yerden gelmesi sorun oluştururmu
                 mapın hepsini araması çok yanlış onun yerine o yerin arkasını aramasın
+                ERROR NUMARALARI 
+                        Z   Y   X
+                        SECTOR Z 
+                        SEÇİM Y
+                        KAÇINCI X
+                                        110   GEREĞİNDEN FAZLA VEYA AZ VAR
+                                        111 YANLIŞ DEĞER
+                                        KALANLARI BURAYA YAZ :         
 """
 import random
 global whereWeIn
@@ -52,7 +60,7 @@ def spawnArea() :   #soft lock only ONE AI can spawn
         if whereWeIn == 2  :
             for block in board :
                 if block['status'] == 3 :
-                    block['status'] == 0 
+                    block['status'] = 0 
                 elif block['status'] == 0 : 
                     what = setItsMe(block , 3)
                     break
@@ -128,7 +136,7 @@ def CanISee(vers , x = None , y = None) :     # bunu şöyle yapabiliriz BAKINIZ
         xApsis = True 
         yApsis = False 
         while xApsis :
-            
+            #TAMAMLA
 def bugCheck(ONE =None , Two = None):  # ilerde sorunların nerde olduğunu nalamak için blackBox u tamamen kapatan ve her bir detayı veren defleri tek tek çalıştıran komutu veren def
     global debuggerMode
     debuggerMode = 1 
@@ -182,10 +190,20 @@ def makeMyChr(whatsType):
         chrCREATE = {
             "ID" : a + 1 ,
             "MyChr" : charWhichIsBlessed,              # şimdi görüyorum ki büyük ihtimal oluşturma sistemi bu olucak 
-            "ChrType" : 
+            "ChrType" : whatsType
             }
 def shoot(mychrID) :
     for chrCRATE in chrListf :
         if mychrID == chrCRATE['ID'] :
-            myChr = chrCRATE['MyChr']
+            myChr = chrCRATE
+    Atack = Fighter(myChr).hit()
+    return Atack
+def doingSomething(mychrID):
+    control = 0
+    for chrCREATE in chrListf :
+        if mychrID == chrCREATE['ID'] :
+            mychr = chrCREATE
+            control += 1    #bu kaç tane bu ID den olduguna bakarak sorunları engelliyor
+        if control >= 2 :
+            return {"err" : 110 , "where" :"doingSomething" , "info" : "duplicate" }       # Error numaraları için lütfen satır 23 e bakın
 #LATES
