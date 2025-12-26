@@ -189,4 +189,4 @@ def shoot(mychrID) :
         if mychrID == chrCRATE['ID'] :
             myChr = chrCRATE['MyChr']
             
-    
+#LATES
