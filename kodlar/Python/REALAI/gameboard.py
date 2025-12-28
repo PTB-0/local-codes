@@ -217,5 +217,6 @@ def doingSomething(mychrID , wannaDo = None):
                 wannaDo = input("Ne Yapacak")
                 continue
             elif wannaDo == "shoot" or wannaDo == 1: # birinci fiil shoot
-                dmg = Fighter(chrCREATE['MyChrTA']).hit(10 , 1 , 1) 
+                dmg = Fighter(chrCREATE['MyChrTA']).hit(10 , 1 , 1)
+                 
 #LATEST
