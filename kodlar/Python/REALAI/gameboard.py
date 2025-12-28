@@ -152,11 +152,6 @@ def Starter():  # İlerde motoru çalıştıran olucak yönetici olucak
     pass
 class Fighter :
     def __init__(self , hp , vs , x,y ):
-        chrCREATE = {
-            "ID" : chrNum + 1 ,
-            "MyChr" : Fighter,              # şimdi görüyorum ki büyük ihtimal oluşturma sistemi bu olucak 
-            "ChrType" : whatsType
-            }
         self.hp = hp 
         self.vs = vs
         self.x = x
@@ -182,8 +177,8 @@ class Fighter :
             return 0  # ölmemiş
     def HurtAndHit() :    #yakın dövüş daha sonra
         pass 
-    def hit(self) :
-        return self.MyGunDmg 
+    def hit(self , lookx , looky) :
+        return self.MyGunDmg , lookx , looky 
     def makeABase():
         pass
     def vs(self):
@@ -195,11 +190,13 @@ def makeMyChr(whatsType):
         a = 0      # bu ıd için lazım
         for chrCRATE in chrListf :
             a += 1
-        charWhichIsBlessed = Fighter(whatsType)    # have nothing speacil bu sadece bizim tarafımızdan doğrudan oluşturulduğu için bleesed
+        whatsName = whatsType + "!" , (a + 1) 
+        charWhichIsBlessed = Fighter(whatsName)    # have nothing speacil bu sadece bizim tarafımızdan doğrudan oluşturulduğu için bleesed
         chrCREATE = {
             "ID" : a + 1 ,
             "MyChr" : charWhichIsBlessed,              # şimdi görüyorum ki büyük ihtimal oluşturma sistemi bu olucak 
-            "ChrType" : whatsType
+            "ChrType" : whatsType,
+            "MyChrTA" : whatsName             #TA : TANIMLAYICI AD
             }
         global chrNum
         chrNum = a + 1
@@ -219,5 +216,6 @@ def doingSomething(mychrID , wannaDo = None):
             if wannaDo == None :
                 wannaDo = input("Ne Yapacak")
                 continue
-             
+            elif wannaDo == "shoot" or wannaDo == 1: # birinci fiil shoot
+                dmg = Fighter(chrCREATE['MyChrTA']).hit(10 , 1 , 1) 
 #LATEST
