@@ -29,6 +29,7 @@ isVisible Kodları ve anlamları :
                                         111 YANLIŞ DEĞER
                                         KALANLARI BURAYA YAZ :         
 """
+chrNum = 0
 import random
 global whereWeIn
 debuggerMode = 0
@@ -151,6 +152,11 @@ def Starter():  # İlerde motoru çalıştıran olucak yönetici olucak
     pass
 class Fighter :
     def __init__(self , hp , vs , x,y ):
+        chrCREATE = {
+            "ID" : chrNum + 1 ,
+            "MyChr" : Fighter,              # şimdi görüyorum ki büyük ihtimal oluşturma sistemi bu olucak 
+            "ChrType" : whatsType
+            }
         self.hp = hp 
         self.vs = vs
         self.x = x
@@ -195,18 +201,23 @@ def makeMyChr(whatsType):
             "MyChr" : charWhichIsBlessed,              # şimdi görüyorum ki büyük ihtimal oluşturma sistemi bu olucak 
             "ChrType" : whatsType
             }
+        global chrNum
+        chrNum = a + 1
 def shoot(mychrID) :
     for chrCRATE in chrListf :
         if mychrID == chrCRATE['ID'] :
             myChr = chrCRATE
     Atack = Fighter(myChr).hit()
     return Atack
-def doingSomething(mychrID):
+def doingSomething(mychrID , wannaDo = None):
     control = 0
     for chrCREATE in chrListf :
-        if mychrID == chrCREATE['ID'] :
-            mychr = chrCREATE
-            control += 1    #bu kaç tane bu ID den olduguna bakarak sorunları engelliyor
         if control >= 2 :
             return {"err" : 110 , "where" :"doingSomething" , "info" : "duplicate" }       # Error numaraları için lütfen satır 23 e bakın
+        if mychrID == chrCREATE['ID'] :
+            control += 1    #bu kaç tane bu ID den olduguna bakarak sorunları engelliyor
+            if wannaDo == None :
+                wannaDo = input("Ne Yapacak")
+                continue
+             
 #LATEST
